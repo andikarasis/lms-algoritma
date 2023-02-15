@@ -1,0 +1,67 @@
+DROP TABLE IF EXISTS admin;
+CREATE TABLE admin(
+    id BIGSERIAL PRIMARY KEY,
+    unique_id VARCHAR(50) UNIQUE,
+    name VARCHAR(200),
+    username VARCHAR(200),
+    password TEXT,
+    created_at TIMESTAMP WITHOUT TIME ZONE DEFAULT NOW(),
+    updated_at TIMESTAMP WITHOUT TIME ZONE
+);
+
+DROP TABLE IF EXISTS users;
+CREATE TABLE users(
+    id BIGSERIAL PRIMARY KEY,
+    unique_id VARCHAR(50) UNIQUE,
+    name VARCHAR(200),
+    username VARCHAR(200),
+    password TEXT,
+    admin_id VARCHAR(50),
+    type VARCHAR(100),
+    created_at TIMESTAMP WITHOUT TIME ZONE DEFAULT NOW(),
+    updated_at TIMESTAMP WITHOUT TIME ZONE
+);
+
+DROP TABLE IF EXISTS books;
+CREATE TABLE books(
+    id BIGSERIAL PRIMARY KEY,
+    code VARCHAR(200),
+    title VARCHAR(200),
+    author VARCHAR(200),
+    stock INT,
+    created_at TIMESTAMP WITHOUT TIME ZONE DEFAULT NOW(),
+    updated_at TIMESTAMP WITHOUT TIME ZONE
+);
+
+DROP TABLE IF EXISTS books_request;
+CREATE TABLE books_request(
+    id BIGSERIAL PRIMARY KEY,
+    user_id VARCHAR(50),
+    title VARCHAR(200),
+    author VARCHAR(200),
+    created_at TIMESTAMP WITHOUT TIME ZONE DEFAULT NOW(),
+    updated_at TIMESTAMP WITHOUT TIME ZONE
+);
+
+DROP TABLE IF EXISTS books_issue;
+CREATE TABLE books_issue(
+    id BIGSERIAL PRIMARY KEY,
+    book_id BIGINT,
+    user_id VARCHAR(50),
+    book_code VARCHAR(200),
+    title VARCHAR(200),
+    returned BOOLEAN DEFAULT false,
+    issue_date TIMESTAMP WITHOUT TIME ZONE DEFAULT NOW(),
+    return_date TIMESTAMP WITHOUT TIME ZONE DEFAULT NOW() + '7 day'::interval,
+    updated_at TIMESTAMP WITHOUT TIME ZONE
+);
+
+DROP TABLE IF EXISTS user_penalty;
+CREATE TABLE user_penalty(
+    id BIGSERIAL PRIMARY KEY,
+    user_id VARCHAR(50),
+    status BOOLEAN DEFAULT true,
+    penalty_at TIMESTAMP WITHOUT TIME ZONE DEFAULT NOW(),
+    release_date TIMESTAMP WITHOUT TIME ZONE DEFAULT NOW() + '3 day'::interval,
+    updated_at TIMESTAMP WITHOUT TIME ZONE
+);
