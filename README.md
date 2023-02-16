@@ -36,7 +36,7 @@ $ npm run deploy
 ### Step Ussage
 POSTMAN API COLLECTION
 ```
-Import file LMS.postman_collection.json to your postman
+https://api.postman.com/collections/13426910-1368cb97-ef18-41b6-a4e2-7e59187241b8?access_key=PMAT-01GSAW7X7GBAHJ3JZ5RQFBP7V6
 ```
 * Create Admin from **Moderator** API
 * Login Admin to get token then replace admin token existing with new admin token
