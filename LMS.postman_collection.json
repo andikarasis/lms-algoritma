@@ -1,0 +1,648 @@
+{
+	"info": {
+		"_postman_id": "1368cb97-ef18-41b6-a4e2-7e59187241b8",
+		"name": "LMS",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "13426910"
+	},
+	"item": [
+		{
+			"name": "Moderator",
+			"item": [
+				{
+					"name": "Create Admin",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "X-Api-Key",
+								"value": "NmZjAOmheiHf13XWoO+SBA==MmP7UdAjj0ZqIfcq",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Admin10\",\n    \"use_generated_password\": false,\n    \"username\": \"admin10\",\n    \"password\": \"12345678\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{endpoint}}/api/moderator/admin/create",
+							"host": [
+								"{{endpoint}}"
+							],
+							"path": [
+								"api",
+								"moderator",
+								"admin",
+								"create"
+							],
+							"query": [
+								{
+									"key": "s",
+									"value": "susah",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Admin",
+			"item": [
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"username\": \"admin10\",\n    \"password\": \"12345678\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{endpoint}}/api/admin/login",
+							"host": [
+								"{{endpoint}}"
+							],
+							"path": [
+								"api",
+								"admin",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create User",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token_admin}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"member2\",\n    \"use_generated_password\": false,\n    \"username\": \"member2\",\n    \"password\": \"12345678\",\n    \"type\": \"MEMBER\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{endpoint}}/api/admin/user/create",
+							"host": [
+								"{{endpoint}}"
+							],
+							"path": [
+								"api",
+								"admin",
+								"user",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Penalty User",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token_admin}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"user_id\": \"a8bc9ba5-1ec8-4c28-b59d-e94fb5ae7f6c\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{endpoint}}/api/admin/user/penalty",
+							"host": [
+								"{{endpoint}}"
+							],
+							"path": [
+								"api",
+								"admin",
+								"user",
+								"penalty"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Release Penalty User",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token_admin}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"user_id\": \"a8bc9ba5-1ec8-4c28-b59d-e94fb5ae7f6c\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{endpoint}}/api/admin/user/release-penalty",
+							"host": [
+								"{{endpoint}}"
+							],
+							"path": [
+								"api",
+								"admin",
+								"user",
+								"release-penalty"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add Book",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token_admin}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"books\": [\n        {\n            \"code\": \"TW-11\",\n            \"title\": \"Twilight\",\n            \"author\": \"Stephenie Meyer\",\n            \"stock\": 1\n        },\n        {\n            \"code\": \"HOB-83\",\n            \"title\": \"The Hobbit, or There and Back Again\",\n            \"author\": \"J.R.R. Tolkien\",\n            \"stock\": 1\n        },\n        {\n            \"code\": \"NRN-7\",\n            \"title\": \"The Lion, the Witch and the Wardrobe\",\n            \"author\": \"C.S. Lewis\",\n            \"stock\": 1\n        }\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{endpoint}}/api/admin/book/add",
+							"host": [
+								"{{endpoint}}"
+							],
+							"path": [
+								"api",
+								"admin",
+								"book",
+								"add"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Book",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token_admin}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"stock\": 1\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{endpoint}}/api/admin/book/update?book_code=JK-45",
+							"host": [
+								"{{endpoint}}"
+							],
+							"path": [
+								"api",
+								"admin",
+								"book",
+								"update"
+							],
+							"query": [
+								{
+									"key": "book_code",
+									"value": "JK-45"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get List Users",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token_admin}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{endpoint}}/api/admin/users",
+							"host": [
+								"{{endpoint}}"
+							],
+							"path": [
+								"api",
+								"admin",
+								"users"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "Login Users",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"username\": \"member1\",\n    \"password\": \"12345678\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{endpoint}}/api/user/login",
+							"host": [
+								"{{endpoint}}"
+							],
+							"path": [
+								"api",
+								"user",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Profile",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImE4YmM5YmE1LTFlYzgtNGMyOC1iNTlkLWU5NGZiNWFlN2Y2YyIsImlhdCI6MTY3NjM4ODQwNH0.fGwo2LyKmvDmXWt5vQfyjfg_GrEnv77DLAUoUlJtzv0",
+								"type": "text"
+							},
+							{
+								"key": "",
+								"value": "",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{endpoint}}/api/user/profile",
+							"host": [
+								"{{endpoint}}"
+							],
+							"path": [
+								"api",
+								"user",
+								"profile"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get List Book",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token_user}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{endpoint}}/api/user/list-book",
+							"host": [
+								"{{endpoint}}"
+							],
+							"path": [
+								"api",
+								"user",
+								"list-book"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get List Book Issue",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token_user}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{endpoint}}/api/user/list-book-issue",
+							"host": [
+								"{{endpoint}}"
+							],
+							"path": [
+								"api",
+								"user",
+								"list-book-issue"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Post Book Issue",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token_user}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"book_id\": 2,\n    \"book_code\": \"SHR-1\",\n    \"title\": \"A Study in Scarlet\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{endpoint}}/api/user/create-book-issue?max_issued=2",
+							"host": [
+								"{{endpoint}}"
+							],
+							"path": [
+								"api",
+								"user",
+								"create-book-issue"
+							],
+							"query": [
+								{
+									"key": "max_issued",
+									"value": "2"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Post Book Return",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token_user}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"book_id\": 2,\n    \"book_code\": \"SHR-1\",\n    \"title\": \"A Study in Scarlet\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{endpoint}}/api/user/book-return?book_id=1",
+							"host": [
+								"{{endpoint}}"
+							],
+							"path": [
+								"api",
+								"user",
+								"book-return"
+							],
+							"query": [
+								{
+									"key": "book_id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Algoritma Test",
+			"item": [
+				{
+					"name": "Reverse Alphabet",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token_user}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{endpoint}}/api/reverse-alphabet",
+							"host": [
+								"{{endpoint}}"
+							],
+							"path": [
+								"api",
+								"reverse-alphabet"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Longest String",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"sentences\": \"Saya sangat senang mengerjakan soal algoritma\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{endpoint}}/api/longest-string",
+							"host": [
+								"{{endpoint}}"
+							],
+							"path": [
+								"api",
+								"longest-string"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Appearance",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"input\": [\"xc\", \"dz\", \"bbb\", \"dz\", \"dz\", \"bbb\"],\n    \"query\": [\"bbb\", \"ac\", \"dz\"]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{endpoint}}/api/appearance",
+							"host": [
+								"{{endpoint}}"
+							],
+							"path": [
+								"api",
+								"appearance"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Appearance Copy",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"matrix\": [\n      [1, 2, 0],\n      [4, 5, 6],\n      [7, 8, 9]\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{endpoint}}/api/matrix",
+							"host": [
+								"{{endpoint}}"
+							],
+							"path": [
+								"api",
+								"matrix"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "endpoint",
+			"value": "http://localhost:4344",
+			"type": "string"
+		},
+		{
+			"key": "token_admin",
+			"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImNlMzI4MzBhLTQyNmMtNGM0ZC04YWJhLTc4NDk5MmRmYzEzOSIsImlhdCI6MTY3NjM3MDQxOX0.pcTWCWTgxunqBehpPu_ArogkwRO6ODVf9k3s7bgq7JA",
+			"type": "string"
+		},
+		{
+			"key": "token_user",
+			"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImE4YmM5YmE1LTFlYzgtNGMyOC1iNTlkLWU5NGZiNWFlN2Y2YyIsImlhdCI6MTY3NjM3MjA4M30.a0zF4PuAkPuGhRGCpgXaMCKF13SfCq_ZdjpAFBONy5E",
+			"type": "string"
+		}
+	]
+}
